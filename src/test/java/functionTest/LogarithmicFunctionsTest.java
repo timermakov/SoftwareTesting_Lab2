@@ -14,15 +14,12 @@ import static org.mockito.Mockito.when;
 public class LogarithmicFunctionsTest {
 
     private static final double PRECISION = 1e-5;
-    private final LnFunction lnFunction = new LnFunction();
-    private final Log2Function log2Function = new Log2Function(lnFunction);
-    private final Log3Function log3Function = new Log3Function(lnFunction);
-    private final Log10Function log10Function = new Log10Function(lnFunction);
 
     @Test
     public void testLog2FunctionAtTwo() {
         LnFunction lnMock = mock(LnFunction.class);
-        when(lnMock.ln(eq(0.))).thenReturn(0.693147);
+        when(lnMock.ln(eq(2.))).thenReturn(1.);
+        Log2Function log2Function = new Log2Function(lnMock);
 
         assertEquals(1, log2Function.log2(2), PRECISION);
     }
@@ -30,7 +27,8 @@ public class LogarithmicFunctionsTest {
     @Test
     public void testLog3FunctionAtThree() {
         LnFunction lnMock = mock(LnFunction.class);
-        when(lnMock.ln(eq(0.))).thenReturn(1.098612);
+        when(lnMock.ln(eq(3.))).thenReturn(1.);
+        Log3Function log3Function = new Log3Function(lnMock);
 
         assertEquals(1, log3Function.log3(3), PRECISION);
     }
@@ -38,7 +36,8 @@ public class LogarithmicFunctionsTest {
     @Test
     public void testLog10FunctionAtTen() {
         LnFunction lnMock = mock(LnFunction.class);
-        when(lnMock.ln(eq(10.))).thenReturn(2.302585);
+        when(lnMock.ln(eq(10.))).thenReturn(1.);
+        Log10Function log10Function = new Log10Function(lnMock);
 
         assertEquals(1, log10Function.log10(10), PRECISION);
     }

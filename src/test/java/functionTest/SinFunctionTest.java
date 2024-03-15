@@ -23,24 +23,24 @@ public class SinFunctionTest {
 
     @Test
     public void testSinFunctionAtPiOverTwo() {
-        SinFunction sinMock = mock(SinFunction.class);
-        when(sinMock.sin(eq(Math.PI / 2))).thenReturn(1.);
+//        SinFunction sinMock = mock(SinFunction.class);
+//        when(sinMock.sin(eq(Math.PI / 2))).thenReturn(1.);
 
         assertEquals(1, sinFunction.sin(Math.PI / 2), PRECISION);
     }
 
     @Test
     public void testSinFunctionAtPi() {
-        SinFunction sinMock = mock(SinFunction.class);
-        when(sinMock.sin(eq(Math.PI))).thenReturn(0.);
+//        SinFunction sinMock = mock(SinFunction.class);
+//        when(sinMock.sin(eq(Math.PI))).thenReturn(0.);
 
         assertEquals(0, sinFunction.sin(Math.PI), PRECISION);
     }
 
     @Test
     public void testSinFunctionAtThreePiOverTwo() {
-        SinFunction sinMock = mock(SinFunction.class);
-        when(sinMock.sin(eq(3 * Math.PI / 2))).thenReturn(-1.);
+//        SinFunction sinMock = mock(SinFunction.class);
+//        when(sinMock.sin(eq(3 * Math.PI / 2))).thenReturn(-1.);
 
         assertEquals(-1, sinFunction.sin(3 * Math.PI / 2), PRECISION);
     }
