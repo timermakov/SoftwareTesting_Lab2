@@ -12,7 +12,15 @@ import static org.junit.Assert.assertEquals;
 public class FunctionSystemMockTest {
 
     private static final double PRECISION = 1e-5;
-    private final FunctionSystem functionSystem = new FunctionSystem();
+    SinFunction sinFunction = new SinFunction();
+    CosFunction cosFunction = new CosFunction(sinFunction);
+    CotFunction cotFunction = new CotFunction(sinFunction, cosFunction);
+    CscFunction cscFunction = new CscFunction(sinFunction);
+    LnFunction lnFunction = new LnFunction();
+    Log2Function log2Function = new Log2Function(lnFunction);
+    Log3Function log3Function = new Log3Function(lnFunction);
+    Log10Function log10Function = new Log10Function(lnFunction);
+    private final FunctionSystem functionSystem = new FunctionSystem(sinFunction, cosFunction, cotFunction, cscFunction, lnFunction, log2Function, log3Function, log10Function);
 
     @Test
     public void testSinFunction() {

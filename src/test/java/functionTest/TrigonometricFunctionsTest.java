@@ -3,6 +3,7 @@ package functionTest;
 import function.CosFunction;
 import function.CotFunction;
 import function.CscFunction;
+import function.SinFunction;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -10,9 +11,10 @@ import static org.junit.Assert.assertEquals;
 public class TrigonometricFunctionsTest {
 
     private static final double PRECISION = 1e-5;
-    private final CosFunction cosFunction = new CosFunction();
-    private final CotFunction cotFunction = new CotFunction();
-    private final CscFunction cscFunction = new CscFunction();
+    private final SinFunction sinFunction = new SinFunction();
+    private final CosFunction cosFunction = new CosFunction(sinFunction);
+    private final CotFunction cotFunction = new CotFunction(sinFunction, cosFunction);
+    private final CscFunction cscFunction = new CscFunction(sinFunction);
 
     @Test
     public void testCosFunctionAtZero() {

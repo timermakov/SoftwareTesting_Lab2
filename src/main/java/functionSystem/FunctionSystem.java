@@ -1,9 +1,13 @@
 package functionSystem;
+
 import function.*;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.util.*;
+import java.util.Comparator;
+import java.util.Locale;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 public class FunctionSystem {
     private final SinFunction sinFunction;
@@ -15,15 +19,16 @@ public class FunctionSystem {
     private final Log3Function log3Function;
     private final Log10Function log10Function;
 
-    public FunctionSystem() {
-        this.sinFunction = new SinFunction();
-        this.cosFunction = new CosFunction();
-        this.cotFunction = new CotFunction();
-        this.cscFunction = new CscFunction();
-        this.lnFunction = new LnFunction();
-        this.log2Function = new Log2Function();
-        this.log3Function = new Log3Function();
-        this.log10Function = new Log10Function();
+    public FunctionSystem(SinFunction sinFunction, CosFunction cosFunction, CotFunction cotFunction, CscFunction cscFunction,
+                          LnFunction lnFunction, Log2Function log2Function, Log3Function log3Function, Log10Function log10Function) {
+        this.sinFunction = sinFunction;
+        this.cosFunction = cosFunction;
+        this.cotFunction = cotFunction;
+        this.cscFunction = cscFunction;
+        this.lnFunction = lnFunction;
+        this.log2Function = log2Function;
+        this.log3Function = log3Function;
+        this.log10Function = log10Function;
     }
 
     public double computeValue(double x) {

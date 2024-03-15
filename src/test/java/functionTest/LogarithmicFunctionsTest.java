@@ -1,5 +1,6 @@
 package functionTest;
 
+import function.LnFunction;
 import function.Log10Function;
 import function.Log2Function;
 import function.Log3Function;
@@ -10,9 +11,10 @@ import static org.junit.Assert.assertEquals;
 public class LogarithmicFunctionsTest {
 
     private static final double PRECISION = 1e-5;
-    private final Log2Function log2Function = new Log2Function();
-    private final Log3Function log3Function = new Log3Function();
-    private final Log10Function log10Function = new Log10Function();
+    private final LnFunction lnFunction = new LnFunction();
+    private final Log2Function log2Function = new Log2Function(lnFunction);
+    private final Log3Function log3Function = new Log3Function(lnFunction);
+    private final Log10Function log10Function = new Log10Function(lnFunction);
 
     @Test
     public void testLog2FunctionAtTwo() {

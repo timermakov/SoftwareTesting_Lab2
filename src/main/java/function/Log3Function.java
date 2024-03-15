@@ -4,8 +4,8 @@ public class Log3Function {
 
     private final LnFunction lnFunction;
 
-    public Log3Function() {
-        this.lnFunction = new LnFunction();
+    public Log3Function(LnFunction lnFunction) {
+        this.lnFunction = lnFunction;
     }
 
     public double log3(double x) {

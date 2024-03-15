@@ -4,9 +4,9 @@ public class CotFunction {
     private final SinFunction sinFunction;
     private final CosFunction cosFunction;
 
-    public CotFunction() {
-        this.sinFunction = new SinFunction();
-        this.cosFunction = new CosFunction();
+    public CotFunction(SinFunction sinFunction, CosFunction cosFunction) {
+        this.sinFunction = sinFunction;
+        this.cosFunction = cosFunction;
     }
 
     public double cot(double x) {

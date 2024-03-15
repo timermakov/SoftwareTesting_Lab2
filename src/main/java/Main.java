@@ -1,3 +1,4 @@
+import function.*;
 import functionSystem.FunctionSystem;
 import outputModule.CsvOutput;
 
@@ -30,7 +31,15 @@ public class Main {
             System.err.println("Please enter a valid number!");
         }
 
-        FunctionSystem functionSystem = new FunctionSystem();
+        SinFunction sinFunction = new SinFunction();
+        CosFunction cosFunction = new CosFunction(sinFunction);
+        CotFunction cotFunction = new CotFunction(sinFunction, cosFunction);
+        CscFunction cscFunction = new CscFunction(sinFunction);
+        LnFunction lnFunction = new LnFunction();
+        Log2Function log2Function = new Log2Function(lnFunction);
+        Log3Function log3Function = new Log3Function(lnFunction);
+        Log10Function log10Function = new Log10Function(lnFunction);
+        FunctionSystem functionSystem = new FunctionSystem(sinFunction, cosFunction, cotFunction, cscFunction, lnFunction, log2Function, log3Function, log10Function);
 
         switch(modeInt) {
             case 1: {

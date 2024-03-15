@@ -1,4 +1,5 @@
 package outputModule;
+import function.*;
 import functionSystem.FunctionSystem;
 import org.junit.After;
 import org.junit.Before;
@@ -17,7 +18,16 @@ public class CsvOutputTest {
 
     private File tempFile;
     private final CsvOutput csvOutput = new CsvOutput();
-    private final FunctionSystem functionSystem = new FunctionSystem();
+    SinFunction sinFunction = new SinFunction();
+    CosFunction cosFunction = new CosFunction(sinFunction);
+    CotFunction cotFunction = new CotFunction(sinFunction, cosFunction);
+    CscFunction cscFunction = new CscFunction(sinFunction);
+    LnFunction lnFunction = new LnFunction();
+    Log2Function log2Function = new Log2Function(lnFunction);
+    Log3Function log3Function = new Log3Function(lnFunction);
+    Log10Function log10Function = new Log10Function(lnFunction);
+    private final FunctionSystem functionSystem = new FunctionSystem(sinFunction, cosFunction, cotFunction, cscFunction, lnFunction, log2Function, log3Function, log10Function);
+
 
     @Before
     public void setUp() throws IOException {
