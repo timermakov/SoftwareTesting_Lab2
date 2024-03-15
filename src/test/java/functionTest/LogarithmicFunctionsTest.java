@@ -8,8 +8,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class LogarithmicFunctionsTest {
 
@@ -37,6 +36,7 @@ public class LogarithmicFunctionsTest {
     public void testLog10FunctionAtTen() {
         LnFunction lnMock = mock(LnFunction.class);
         when(lnMock.ln(eq(10.))).thenReturn(1.);
+        doReturn(1.).when(lnMock).ln(eq(10.));
         Log10Function log10Function = new Log10Function(lnMock);
 
         assertEquals(1, log10Function.log10(10), PRECISION);

@@ -49,8 +49,6 @@ public class TrigonometricFunctionsTest {
         when(sinMock.sin(eq(0))).thenReturn(0.);
         SinFunction sinFunction = new SinFunction();
 
-        CosFunction cosMock = mock(CosFunction.class);
-        when(cosMock.cos(eq(0))).thenReturn(1.);
         CosFunction cosFunction = new CosFunction(sinMock);
 
         CotFunction cotFunction = new CotFunction(sinFunction, cosFunction);
