@@ -1,11 +1,10 @@
+package functionSystemTest;
 
 import functionSystem.FunctionSystem;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import outputModule.CsvOutput;
-
-import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -18,9 +17,12 @@ import java.util.Locale;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import static org.junit.Assert.assertEquals;
+
 public class FunctionSystemIntegrationTest {
 
     private Path tempCsvFile;
+    private final FunctionSystem functionSystem = new FunctionSystem();
 
     @Before
     public void setUp() throws IOException {
@@ -30,8 +32,8 @@ public class FunctionSystemIntegrationTest {
     @Test
     public void integrationTestForValueWithCsvOutput() throws IOException {
         SortedMap<Double, Double> sortedMap = new TreeMap<>();
-        sortedMap.put(-0.1, FunctionSystem.computeValue(-0.1));
-        sortedMap.put(0.2, FunctionSystem.computeValue(0.2));
+        sortedMap.put(-0.1, functionSystem.computeValue(-0.1));
+        sortedMap.put(0.2, functionSystem.computeValue(0.2));
 
         CsvOutput csvOutput = new CsvOutput();
         csvOutput.writeToCsv(tempCsvFile.toAbsolutePath().toString(), sortedMap);
@@ -50,8 +52,7 @@ public class FunctionSystemIntegrationTest {
 
     @Test
     public void integrationTestForRangeWithCsvOutput() throws IOException {
-        SortedMap<Double, Double> sortedMap = new TreeMap<>();
-        sortedMap = FunctionSystem.computeOnRange(-0.9, -0.1, 0.1);
+        SortedMap<Double, Double> sortedMap = functionSystem.computeOnRange(-0.9, -0.1, 0.1);
 
         CsvOutput csvOutput = new CsvOutput();
         csvOutput.writeToCsv(tempCsvFile.toAbsolutePath().toString(), sortedMap);

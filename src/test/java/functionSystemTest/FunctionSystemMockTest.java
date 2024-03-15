@@ -9,9 +9,10 @@ import static org.mockito.AdditionalMatchers.leq;
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.assertEquals;
 
-public class FunctionSystemTest {
+public class FunctionSystemMockTest {
 
     private static final double PRECISION = 1e-5;
+    private final FunctionSystem functionSystem = new FunctionSystem();
 
     @Test
     public void testSinFunction() {
@@ -54,7 +55,7 @@ public class FunctionSystemTest {
         double expected = (((((Math.cos(x) + 1/Math.sin(x)) - Math.sin(x)) * Math.sin(x))
                 + ((Math.cos(x) / Math.sin(x)) * (Math.cos(x) - Math.cos(x) / Math.sin(x))))
                 - Math.cos(x));
-        assertEquals(expected, FunctionSystem.computeValue(x), PRECISION);
+        assertEquals(expected, functionSystem.computeValue(x), PRECISION);
     }
 
     @Test
@@ -63,13 +64,13 @@ public class FunctionSystemTest {
         double expected = (((((Math.log(x) / Math.log(2)) * Math.log10(x)) / (Math.log(x) / Math.log(3)))
                 * (Math.log(x) / Math.log(2))) / (Math.log(x) / Math.log(3)))
                 + ((Math.log(x) / Math.log(3)) + Math.pow(Math.log(x), 3));
-        assertEquals(expected, FunctionSystem.computeValue(x), PRECISION);
+        assertEquals(expected, functionSystem.computeValue(x), PRECISION);
     }
 
     @Test
     public void testFunctionSystemTrigonometricPartZeroX() {
         double x = 0;
         double expected = Double.NaN;
-        assertEquals(expected, FunctionSystem.computeValue(x), PRECISION);
+        assertEquals(expected, functionSystem.computeValue(x), PRECISION);
     }
 }

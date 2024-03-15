@@ -1,10 +1,13 @@
 package function;
 
 public class CscFunction {
-    public static double csc(double x) {
-        SinFunction sinFunction = new SinFunction();
-        double sinx = sinFunction.sin(x);
-        if (sinx == 0) throw new IllegalArgumentException("sin(x) is zero, csc(x) is undefined");
-        return 1 / sinx;
+    private final SinFunction sinFunction;
+
+    public CscFunction() {
+        this.sinFunction = new SinFunction();
+    }
+    public double csc(double x) {
+        if (sinFunction.sin(x) == 0) throw new IllegalArgumentException("sin(x) is zero, csc(x) is undefined");
+        return 1 / sinFunction.sin(x);
     }
 }

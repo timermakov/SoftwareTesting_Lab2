@@ -2,8 +2,13 @@ package function;
 
 public class Log3Function {
 
-    public static double log3(double x) {
-        LnFunction lnFunction = new LnFunction();
+    private final LnFunction lnFunction;
+
+    public Log3Function() {
+        this.lnFunction = new LnFunction();
+    }
+
+    public double log3(double x) {
         return lnFunction.ln(x) / lnFunction.ln(3);
     }
 }

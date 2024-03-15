@@ -1,10 +1,12 @@
-import functionSystem.*;
-import function.*;
-import outputModule.*;
+import functionSystem.FunctionSystem;
+import outputModule.CsvOutput;
+
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.IOException;
-import java.util.*;
+import java.io.InputStreamReader;
+import java.util.Comparator;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,20 +14,23 @@ public class Main {
 
         System.out.println("This program can calculate the result of function system in point or in range:\n" +
                 "((((((cos(x) + csc(x)) - sin(x)) * sin(x)) + (cot(x) * (cos(x) - cot(x)))) - cos(x)) if x < 0), \n" +
-                "((((((log_2(x) * log_10(x)) / log_3(x)) * log_2(x)) / log_3(x)) + (log_3(x) + (ln(x) ^ 3))) if x > 0)`");
+                "((((((log_2(x) * log_10(x)) / log_3(x)) * log_2(x)) / log_3(x)) + (log_3(x) + (ln(x) ^ 3))) if x > 0)");
 
-        System.out.println("Select mode of working: \n" +
+        System.out.println("Select mode: \n" +
                 "1 - get result of x in point, 2 - get result in range from start to stop with delta");
 
-        String mode = "";
+
+
         int modeInt = 0;
         try {
-            mode = reader.readLine();
+            String mode = reader.readLine();
             modeInt = Integer.parseInt(mode);
         }
         catch (IOException e) {
-            System.err.println("Please enter a valid number.");
+            System.err.println("Please enter a valid number!");
         }
+
+        FunctionSystem functionSystem = new FunctionSystem();
 
         switch(modeInt) {
             case 1: {
@@ -34,7 +39,8 @@ public class Main {
                     String input = reader.readLine();
 
                     double x = Double.parseDouble(input);
-                    double result = FunctionSystem.computeValue(x);
+
+                    double result = functionSystem.computeValue(x);
 
                     System.out.println(x + ", " + result);
 
@@ -42,7 +48,7 @@ public class Main {
                     sortedMap.put(x, result);
 
                     CsvOutput csvOutput = new CsvOutput();
-                    String filename = "function_system_output.csv";
+                    String filename = "Output.csv";
                     csvOutput.writeToCsv(filename, sortedMap);
 
                     System.out.println("The result is " + result + " and has been saved to " + filename);
@@ -65,11 +71,10 @@ public class Main {
                     input = reader.readLine();
                     double step = Double.parseDouble(input);
 
-                    SortedMap<Double, Double> sortedMap = new TreeMap<>(Comparator.comparingDouble(o -> o));
-                    sortedMap = FunctionSystem.computeOnRange(start, stop, step);
+                    SortedMap<Double, Double> sortedMap = functionSystem.computeOnRange(start, stop, step);
 
                     CsvOutput csvOutput = new CsvOutput();
-                    String filename = "function_system_output.csv";
+                    String filename = "Output.csv";
                     csvOutput.writeToCsv(filename, sortedMap);
 
                     System.out.println("The result has been saved to " + filename);

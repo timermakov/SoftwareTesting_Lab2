@@ -1,8 +1,12 @@
 package function;
 
 public class CosFunction {
-    public static double cos(double x) {
-        SinFunction sinFunction = new SinFunction();
+    private final SinFunction sinFunction;
+
+    public CosFunction() {
+        this.sinFunction = new SinFunction();
+    }
+    public double cos(double x) {
         return sinFunction.sin(x + Math.PI / 2);
     }
 }

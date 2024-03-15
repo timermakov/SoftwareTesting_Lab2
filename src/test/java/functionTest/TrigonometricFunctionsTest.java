@@ -4,34 +4,38 @@ import function.CosFunction;
 import function.CotFunction;
 import function.CscFunction;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
-public class TrigonometricFunctionTest {
+public class TrigonometricFunctionsTest {
 
     private static final double PRECISION = 1e-5;
+    private final CosFunction cosFunction = new CosFunction();
+    private final CotFunction cotFunction = new CotFunction();
+    private final CscFunction cscFunction = new CscFunction();
 
     @Test
     public void testCosFunctionAtZero() {
-        assertEquals(1, CosFunction.cos(0), PRECISION);
+        assertEquals(1, cosFunction.cos(0), PRECISION);
     }
 
     @Test
     public void testCscFunctionAtPiOverTwo() {
-        assertEquals(1, CscFunction.csc(Math.PI / 2), PRECISION);
+        assertEquals(1, cscFunction.csc(Math.PI / 2), PRECISION);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testCscFunctionAtZero() {
-        CscFunction.csc(0);
+        cscFunction.csc(0);
     }
 
     @Test
     public void testCotFunctionAtPiOverFour() {
-        assertEquals(1, CotFunction.cot(Math.PI / 4), PRECISION);
+        assertEquals(1, cotFunction.cot(Math.PI / 4), PRECISION);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testCotFunctionAtZero() {
-        CotFunction.cot(0);
+        cotFunction.cot(0);
     }
 }
