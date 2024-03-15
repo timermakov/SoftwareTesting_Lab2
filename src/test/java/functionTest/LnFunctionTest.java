@@ -15,7 +15,6 @@ public class LnFunctionTest {
     @Test(expected = IllegalArgumentException.class)
     public void testLnFunctionAtZero() {
         LnFunction lnMock = mock(LnFunction.class);
-
         when(lnMock.ln(eq(0.))).thenThrow(IllegalArgumentException.class);
 
         lnFunction.ln(0);
@@ -24,7 +23,6 @@ public class LnFunctionTest {
     @Test
     public void testLnFunctionAtOne() {
         LnFunction lnMock = mock(LnFunction.class);
-
         when(lnMock.ln(eq(1))).thenReturn(0.);
 
         assertEquals(0, lnFunction.ln(1), PRECISION);
@@ -33,7 +31,6 @@ public class LnFunctionTest {
     @Test
     public void testLnFunctionAtE() {
         LnFunction lnMock = mock(LnFunction.class);
-
         when(lnMock.ln(eq(Math.E))).thenReturn(1.);
 
         assertEquals(1, lnFunction.ln(Math.E), PRECISION);

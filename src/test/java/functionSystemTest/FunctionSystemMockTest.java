@@ -25,7 +25,6 @@ public class FunctionSystemMockTest {
     @Test
     public void testSinFunction() {
         SinFunction sinMock = mock(SinFunction.class);
-
         when(sinMock.sin(eq(0))).thenReturn(0.);
         when(sinMock.sin(eq(Math.PI))).thenReturn(0.);
         when(sinMock.sin(eq(Math.PI / 2))).thenReturn(1.);
@@ -40,7 +39,6 @@ public class FunctionSystemMockTest {
     @Test
     public void testLnFunctionInvalid() {
         LnFunction lnMock = mock(LnFunction.class);
-
         when(lnMock.ln(leq(0.))).thenThrow(new IllegalArgumentException());
 
         assertThrows(IllegalArgumentException.class, () -> lnMock.ln(0));
@@ -49,7 +47,6 @@ public class FunctionSystemMockTest {
     @Test
     public void testLnFunctionValid() {
         LnFunction lnMock = mock(LnFunction.class);
-
         when(lnMock.ln(eq(0.5))).thenReturn(-0.693147);
         when(lnMock.ln(eq(1))).thenReturn(0.);
 

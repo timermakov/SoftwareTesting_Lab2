@@ -16,7 +16,6 @@ public class SinFunctionTest {
     @Test
     public void testSinFunctionAtZero() {
         SinFunction sinMock = mock(SinFunction.class);
-
         when(sinMock.sin(eq(0))).thenReturn(0.);
 
         assertEquals(0, sinFunction.sin(0), PRECISION);
@@ -25,7 +24,6 @@ public class SinFunctionTest {
     @Test
     public void testSinFunctionAtPiOverTwo() {
         SinFunction sinMock = mock(SinFunction.class);
-
         when(sinMock.sin(eq(Math.PI / 2))).thenReturn(1.);
 
         assertEquals(1, sinFunction.sin(Math.PI / 2), PRECISION);
@@ -34,7 +32,6 @@ public class SinFunctionTest {
     @Test
     public void testSinFunctionAtPi() {
         SinFunction sinMock = mock(SinFunction.class);
-
         when(sinMock.sin(eq(Math.PI))).thenReturn(0.);
 
         assertEquals(0, sinFunction.sin(Math.PI), PRECISION);
@@ -43,7 +40,6 @@ public class SinFunctionTest {
     @Test
     public void testSinFunctionAtThreePiOverTwo() {
         SinFunction sinMock = mock(SinFunction.class);
-
         when(sinMock.sin(eq(3 * Math.PI / 2))).thenReturn(-1.);
 
         assertEquals(-1, sinFunction.sin(3 * Math.PI / 2), PRECISION);
